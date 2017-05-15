@@ -79,6 +79,12 @@ else
 fi
 ln -sf ../conf ${TARGETDIR}/conf
 
+# adb directory I/O Error fix/workaround
+rm -rf /var/cpadb
+mkdir /var/cpadb
+rm -f /var/crashplan/conf/adb
+ln -sf /var/cpadb /var/crashplan/conf/adb
+
 if [[ -z "$PUBLIC_IP" || -z "$PUBLIC_PORT" ]]; then
     # Default values :(
     PUBLIC_IP=0.0.0.0
